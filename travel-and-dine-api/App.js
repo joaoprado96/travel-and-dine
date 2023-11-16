@@ -9,7 +9,6 @@ const app = express();
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Conectado ao MongoDB'))
   .catch(err => console.error('Não foi possível conectar ao MongoDB', err));
-// Servir arquivos estáticos da pasta 'public'
 
 app.use(cors({
   origin: 'http://localhost:3000' // Permitir apenas solicitações do frontend em localhost:3000
@@ -18,6 +17,8 @@ app.use(cors({
 app.use(express.static('public'));
 
 app.use('/rotas', minhaRota);
+app.use('/image', express.static('uploads'));
+
 
 const port = process.env.PORT || 3001;
 

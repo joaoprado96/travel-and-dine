@@ -24,10 +24,19 @@ router.get('/buscar', async (req, res) => {
   }
 });
 
+router.get('/buscar/:id', async (req, res) => {
+  try {
+      const restaurante = await MeuModelo.findById(req.params.id);
+      res.json(restaurante);
+  } catch (error) {
+      res.status(500).send('Erro ao buscar o restaurante: ' + error.message);
+  }
+});
+
 router.post('/upload', upload.single('minhaFoto'), async (req, res) => {
   const novoItem = new MeuModelo({
     nome: req.body.nome,
-    caminhoFoto: req.file.path
+    caminhoFoto: 'image/' + req.file.filename
   });
 
   try {
@@ -42,7 +51,6 @@ router.get('/upload', (req, res) => {
     res.sendFile('index.html', { root: './public' });
   });
   
-
   
 // Outras rotas CRUD aqui
 

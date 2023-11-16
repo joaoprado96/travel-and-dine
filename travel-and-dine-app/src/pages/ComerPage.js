@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getRestaurants } from '../services/apiService';
+import { Link } from 'react-router-dom';
 
 const ComerPage = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -7,25 +8,28 @@ const ComerPage = () => {
   useEffect(() => {
     getRestaurants().then(data => setRestaurants(data));
   }, []);
-  console.log(restaurants);
+
   return (
     <div>
       <h2>Opções de Restaurantes</h2>
       <div>
         {restaurants.map(restaurant => (
-          <div key={restaurant.item._id} style={{ display: 'flex', alignItems: 'center', margin: '20px', padding: '10px', border: '1px solid #ccc' }}>
+          <Link to={`/DetalhesRestaurante/${restaurant.item._id}`} key={restaurant.item._id} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <div style={{ display: 'flex', alignItems: 'center', margin: '20px', padding: '10px', border: '1px solid #ccc' }}>
             <img 
-              src={restaurant.item._id}
-              alt={restaurant.item._id} 
-              style={{ width: '100px', height: '100px', marginRight: '20px' }} // Ajuste conforme necessário
+                src={restaurant.item.caminhoFoto && restaurant.item.caminhoFoto.length > 0 ? `http://localhost:3001/image/${restaurant.item.caminhoFoto[0]}` : 'http://localhost:3001/image/minhaFoto-1700136966575.jpg'}
+                alt={restaurant.item.nome} 
+                style={{ width: '100px', height: '100px', marginRight: '20px' }}
             />
-            <div>
-              <h3>{restaurant._id}</h3>
-              <p>Culinária: {restaurant.item._id}</p>
-              <p>Faixa de Preço: {restaurant.item._id}</p>
-              {/* Aqui você pode adicionar mais informações ou ações para cada restaurante */}
+              <div>
+                <h3>{restaurant.item.nome}</h3>
+                <p>Culinária: {restaurant.item.Categoria}</p>
+                <p>Faixa de Preço: {restaurant.item.Preço}</p>
+                <p>Endereço: {restaurant.item.endereco}</p>
+                <p>Lista: {restaurant.item.caminhoFoto}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
