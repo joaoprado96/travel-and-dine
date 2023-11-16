@@ -1,0 +1,41 @@
+.homePage {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+.homePage h1 {
+    color: white;
+    text-align: center;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    width: 100px; /* ou outro valor conforme necessário */
+    height: 100px; /* ou outro valor conforme necessário */
+    border: none;
+    color: white; /* ou outra cor conforme necessário */
+}
+
+/* Estilos específicos para cada botão, se necessário */
+.button-comer {
+    background-image: url('../assets/comer.jpg');
+}
+
+.button-viajar {
+    background-image: url('../assets/viajar.jpg');
+}
