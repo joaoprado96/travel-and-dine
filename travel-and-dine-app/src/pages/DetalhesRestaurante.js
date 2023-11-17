@@ -3,7 +3,7 @@ import { getRestaurantId } from '../services/apiService';
 import { useParams } from 'react-router-dom';
 
 const DetalhesRestaurante = () => {
-  const [restaurante, setRestaurante] = useState(null);
+  const [restaurant, setRestaurante] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -11,19 +11,26 @@ const DetalhesRestaurante = () => {
   }, [id]);
   
 
-  if (!restaurante) {
+  if (!restaurant) {
     return <div>Carregando...</div>;
   }
 
   return (
     <div>
-      <h2>{restaurante.nome}</h2>
-      <p>Culinária: {restaurante.Categoria}</p>
-      <p>Faixa de Preço: {restaurante.Preço}</p>
-      <p>Endereço: {restaurante.endereco}</p>
+      <h2>{restaurant.nome}</h2>
+        <p>Culinária: {restaurant.culinaria}</p>
+        <p>Dias: {restaurant.dias}</p>
+        <p>Horario: {restaurant.horario}</p>
+        <p>Faixa de Preço: {restaurant.precos}</p>
+        <p>Cartões: {restaurant.cartao}</p>
+        <p>Tema: {restaurant.tema}</p>
+        <p>Avaliação: {restaurant.avaliacao}</p>
+        <p>Endereço: {restaurant.endereco}</p>
+        <p>Telefone: {restaurant.telefone}</p>
+        <p>Instagram: {restaurant.instagram}</p>
       <div className="galeria-fotos">
-        {restaurante.caminhoFoto.map((foto, index) => (
-          <img key={index} src={`http://localhost:3001/image/${foto}`} alt={`Foto do restaurante ${restaurante.nome}`} style={{ width: '200px', margin: '10px' }} />
+        {restaurant.caminhoFoto.map((foto, index) => (
+          <img key={index} src={`http://localhost:3001/image/${foto}`} alt={`Foto do restaurante ${restaurant.nome}`} style={{ width: '200px', margin: '10px' }} />
         ))}
       </div>
     </div>

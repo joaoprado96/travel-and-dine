@@ -23,10 +23,11 @@ const ComerPage = () => {
             />
               <div>
                 <h3>{restaurant.item.nome}</h3>
-                <p>Culinária: {restaurant.item.Categoria}</p>
-                <p>Faixa de Preço: {restaurant.item.Preço}</p>
-                <p>Endereço: {restaurant.item.endereco}</p>
-                <p>Lista: {restaurant.item.caminhoFoto}</p>
+                <p>Culinária: {restaurant.item.culinaria}</p>
+                <p>Dias: {restaurant.item.dias}</p>
+                <p>Horario: {restaurant.item.horario}</p>
+                <p>Faixa de Preço: {restaurant.item.precos}</p>
+                <p>Avaliação: {restaurant.item.avaliacao}</p>
               </div>
             </div>
           </Link>
