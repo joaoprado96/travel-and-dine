@@ -31,7 +31,7 @@ const DetalhesRestaurante = () => {
         <p>Instagram: {restaurant.instagram}</p>
       <div className="galeria-fotos">
         {restaurant.caminhoFoto.map((foto, index) => (
-          <img key={index} src={`http://localhost:3001/image/${foto}`} alt={`Foto do restaurante ${restaurant.nome}`} style={{ width: '200px', margin: '10px' }} />
+          <img key={index} src={`${config.backURL}/image/${foto}`} alt={`Foto do restaurante ${restaurant.nome}`} style={{ width: '200px', margin: '10px' }} />
         ))}
       </div>
     </div>
