@@ -1,0 +1,90 @@
+body {
+    padding-top: 210px; /* Ajuste este valor conforme a altura do seu menu superior */
+  }
+.menu-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Ou a cor de sua preferência */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 500;
+  }
+  
+  .menu-content {
+    max-width: 1200px; /* Ou a largura de sua preferência */
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px 0;
+  }
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .select-with-image {
+    display: flex;
+    align-items: center;
+  }
+  
+  .select-with-image img {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+
+  .hidden-select {
+    display: none;
+  }
+  
+  .pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f0f0f0; /* Cor de fundo do rodapé */
+    border-top: 1px solid #dcdcdc; /* Borda superior para separar do conteúdo */
+  }
+  
+  .pagination-container button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination-container button:disabled {
+    background-color: #cccccc;
+    cursor: default;
+  }
+  
+  .pagination-container button:not(:disabled):hover {
+    background-color: #0056b3;
+  }
+  
+  .pagination-container span {
+    color: #333333;
+  }
+  

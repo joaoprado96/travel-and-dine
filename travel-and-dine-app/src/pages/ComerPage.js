@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getFiltros, getRestaurants } from '../services/apiService';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
+import './ComerPage.css';
 const config = require('../var');
 
 const ComerPage = () => {
@@ -17,6 +18,51 @@ const ComerPage = () => {
     horario: [],
     // ... outros campos se necessário ...
   });
+  
+  const [visibleSelects, setVisibleSelects] = useState({
+    culinaria: false,
+    tema: false,
+    cartao: false,
+    dias: false,
+    horario: false,
+    precos: false,
+    avaliacao: false,
+  });
+
+  // Atualiza a visibilidade dos filtros
+  const toggleSelectVisibility = (name) => {
+    setVisibleSelects(prevState => ({
+      ...prevState,
+      [name]: !prevState[name],
+    }));
+  };
+
+  // Verifica se o filtro tem opções selecionadas
+  const hasSelection = (name) => {
+    // Implemente a lógica para verificar se o filtro tem seleções
+      return false;
+      // return selectedOptions[name].length > 0;
+  };
+
+  const renderSelectWithImage = (name, handleChange) => (
+    <div className="select-with-image">
+      <img
+        src={`${config.backURL}/image/${name}.png`}
+        alt={name}
+        onClick={() => toggleSelectVisibility(name)}
+      />
+      {(visibleSelects[name] || hasSelection(name)) && (
+        <Select
+          isMulti={name !== 'precos' && name !== 'avaliacao'}
+          name={name}
+          options={opcoesFiltro[name]}
+          className="basic-multi-select"
+          classNamePrefix="select"
+          onChange={handleChange}
+        />
+      )}
+    </div>
+  );
 
   const [currentPage, setCurrentPage] = useState(0);
   const restaurantsPerPage = 30; // Número de restaurantes por página
@@ -64,7 +110,6 @@ const ComerPage = () => {
     });
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     // A função getRestaurants é chamada novamente devido à mudança de estado do filtro
@@ -84,71 +129,22 @@ const ComerPage = () => {
 
   return (
     <div>
-      <h2>Opções de Restaurantes</h2>
-      <form onSubmit={handleSubmit}>
-        <h4>Culinária</h4>
-        <Select
-          isMulti name="culinaria"
-          options={opcoesFiltro.culinaria}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          onChange={handleFilterChange}
-        />
-        <h4>Tema</h4>
-        <Select
-          isMulti
-          name="tema"
-          options={opcoesFiltro.tema}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          onChange={handleFilterChange}
-        />
-        <h4>Cartão</h4>
-        <Select
-          isMulti
-          name="cartao"
-          options={opcoesFiltro.cartao}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          onChange={handleFilterChange}
-        />
-        <h4>Dias</h4>
-        <Select
-          isMulti
-          name="dias"
-          options={opcoesFiltro.dias}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          onChange={handleFilterChange}
-        />
-        <h4>Horário</h4>
-        <Select
-          isMulti
-          name="horario"
-          options={opcoesFiltro.horario}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          onChange={handleFilterChange}
-        />
-        <h4>Preço</h4>
-        <Select
-          name="precos"
-          options={opcoesFiltro.precos}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          onChange={handleFilterChange2}
-        />
-        <h4>Avaliação</h4>
-        <Select
-          name="avaliacao"
-          options={opcoesFiltro.avaliacao}
-          className="basic-multi-select"
-          classNamePrefix="select"
-          onChange={handleFilterChange2}
-        />
-        <button type="submit">Filtrar</button>
-      </form>
-      <div>
+      <div className="menu-superior">
+          <div className="menu-content">
+            <h2>Opções de Restaurantes</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="form-container">
+                  {renderSelectWithImage('culinaria', handleFilterChange)}
+                  {renderSelectWithImage('tema', handleFilterChange)}
+                  {renderSelectWithImage('cartao', handleFilterChange)}
+                  {renderSelectWithImage('dias', handleFilterChange)}
+                  {renderSelectWithImage('horario', handleFilterChange)}
+                  {renderSelectWithImage('precos', handleFilterChange2)}
+                  {renderSelectWithImage('avaliacao', handleFilterChange2)}
+                </div>
+              </form>
+          </div>
+      </div>
         {currentRestaurants.map(restaurant => (
         <Link to={`/DetalhesRestaurante/${restaurant.item._id}`} key={restaurant.item._id} style={{ textDecoration: 'none', color: 'inherit' }}>
           <div style={{ display: 'flex', alignItems: 'center', margin: '20px', padding: '10px', border: '1px solid #ccc' }}>
@@ -168,8 +164,7 @@ const ComerPage = () => {
           </div>
         </Link>
       ))}
-      <div>
-        {/* Controles de Paginação */}
+      <div className="pagination-container">
         <button onClick={goToFirstPage} disabled={currentPage === 0}>Primeira</button>
         <button onClick={goToPreviousPage} disabled={currentPage === 0}>Anterior</button>
         <span>Página {currentPage + 1} de {totalPages}</span>
@@ -177,7 +172,6 @@ const ComerPage = () => {
         <button onClick={goToLastPage} disabled={currentPage >= totalPages - 1}>Última</button>
       </div>
       </div>
-    </div>
   );
 };
 
