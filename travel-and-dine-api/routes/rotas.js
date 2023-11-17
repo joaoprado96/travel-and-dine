@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const MeuModelo = require('../models/MeuModelo');
 const router = express.Router();
+const upload = multer({ storage: storage });
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -12,9 +13,6 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage: storage });
-
-// Rota GET para buscar todos os elementos
 router.get('/buscar', async (req, res) => {
   try {
     const elementos = await MeuModelo.find();
@@ -33,6 +31,10 @@ router.get('/buscar/:id', async (req, res) => {
   }
 });
 
+router.get('/upload', (req, res) => {
+  res.sendFile('index.html', { root: './public' });
+});
+
 router.post('/upload', upload.single('minhaFoto'), async (req, res) => {
   const novoItem = new MeuModelo({
     nome: req.body.nome,
@@ -46,12 +48,5 @@ router.post('/upload', upload.single('minhaFoto'), async (req, res) => {
     res.status(500).send('Erro ao salvar o item.');
   }
 });
-
-router.get('/upload', (req, res) => {
-    res.sendFile('index.html', { root: './public' });
-  });
-  
-  
-// Outras rotas CRUD aqui
 
 module.exports = router;
