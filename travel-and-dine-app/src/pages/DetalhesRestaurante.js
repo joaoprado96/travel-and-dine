@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getRestaurantId } from '../services/apiService';
 import { useParams } from 'react-router-dom';
+const config = require('../var');
 
 const DetalhesRestaurante = () => {
   const [restaurant, setRestaurante] = useState(null);

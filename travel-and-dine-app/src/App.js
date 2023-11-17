@@ -5,6 +5,8 @@ import ComerPage from './pages/ComerPage';
 import ViajarPage from './pages/ViajarPage';
 import DetalhesRestaurante from './pages/DetalhesRestaurante';
 
+const config = require('./var');
+
 function App() {
   return (
     <Router>

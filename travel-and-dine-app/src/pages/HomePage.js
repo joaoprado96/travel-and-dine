@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/fundo.jpg';
 import './HomePage.css';
+const config = require('../var');
 
 const HomePage = () => {
     const navigate = useNavigate();

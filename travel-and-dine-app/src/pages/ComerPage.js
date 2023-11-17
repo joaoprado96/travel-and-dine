@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getRestaurants } from '../services/apiService';
 import { Link } from 'react-router-dom';
+const config = require('../var');
 
 const ComerPage = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -17,7 +18,7 @@ const ComerPage = () => {
           <Link to={`/DetalhesRestaurante/${restaurant.item._id}`} key={restaurant.item._id} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div style={{ display: 'flex', alignItems: 'center', margin: '20px', padding: '10px', border: '1px solid #ccc' }}>
             <img 
-                src={restaurant.item.caminhoFoto && restaurant.item.caminhoFoto.length > 0 ? `http://localhost:3001/image/${restaurant.item.caminhoFoto[0]}` : 'http://localhost:3001/image/minhaFoto-1700136966575.jpg'}
+                src={restaurant.item.caminhoFoto && restaurant.item.caminhoFoto.length > 0 ? `${config.backURL}/image/${restaurant.item.caminhoFoto[0]}` : `${config.backURL}/image/${config.imgpadrao}`}
                 alt={restaurant.item.nome} 
                 style={{ width: '100px', height: '100px', marginRight: '20px' }}
             />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getTravelOptions } from '../services/apiService';
+const config = require('../var');
 
 const ViajarPage = () => {
     const [travelOptions, setTravelOptions] = useState([]);
