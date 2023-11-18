@@ -1,0 +1,31 @@
+/* Header.css */
+header {
+  background-color: #333; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  text-align: center; /* Alinhamento do texto */
+}
+
+nav a {
+  color: white; /* Cor dos links */
+  margin: 0 15px; /* Margem entre os links */
+  text-decoration: none; /* Remove o sublinhado dos links */
+  font-size: 18px; /* Tamanho da fonte */
+  transition: color 0.3s; /* Transição suave para a cor */
+}
+
+nav a:hover {
+  color: #4CAF50; /* Cor ao passar o mouse */
+}
+
+@media (max-width: 600px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 10px 0; /* Margem para dispositivos móveis */
+  }
+}

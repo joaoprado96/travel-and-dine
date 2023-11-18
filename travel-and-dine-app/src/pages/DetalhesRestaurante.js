@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getRestaurantId } from '../services/apiService';
 import { useParams } from 'react-router-dom';
+import PhotoCarousel from './components/PhotoCarousel';
 const config = require('../var');
 
 const DetalhesRestaurante = () => {
@@ -16,6 +17,9 @@ const DetalhesRestaurante = () => {
     return <div>Carregando...</div>;
   }
 
+  const imageUrls = restaurant.caminhoFoto.map(foto => `${config.backURL}/image/${foto}`);
+
+
   return (
     <div>
       <h2>{restaurant.nome}</h2>
@@ -29,11 +33,10 @@ const DetalhesRestaurante = () => {
         <p>Endereço: {restaurant.endereco}</p>
         <p>Telefone: {restaurant.telefone}</p>
         <p>Instagram: {restaurant.instagram}</p>
-      <div className="galeria-fotos">
-        {restaurant.caminhoFoto.map((foto, index) => (
-          <img key={index} src={`${config.backURL}/image/${foto}`} alt={`Foto do restaurante ${restaurant.nome}`} style={{ width: '200px', margin: '10px' }} />
-        ))}
-      </div>
+        <div>
+            <h1>Meu Carrossel de Fotos</h1>
+            <PhotoCarousel images={imageUrls} />
+        </div>
     </div>
   );
 };

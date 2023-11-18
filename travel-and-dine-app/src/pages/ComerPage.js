@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { getFiltros, getRestaurants } from '../services/apiService';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
+import Header from './components/Header';
+import WelcomeSection from './components/WelcomeSection';
+import FeaturesSection from './components/FeaturesSection';
+import Footer from './components/Footer';
 import './ComerPage.css';
 const config = require('../var');
 
@@ -130,6 +134,7 @@ const ComerPage = () => {
   return (
     <div>
       <div className="menu-superior">
+      <Header />
           <div className="menu-content">
             <h2>Opções de Restaurantes</h2>
               <form onSubmit={handleSubmit}>
@@ -171,6 +176,7 @@ const ComerPage = () => {
         <button onClick={goToNextPage} disabled={currentPage >= totalPages - 1}>Próxima</button>
         <button onClick={goToLastPage} disabled={currentPage >= totalPages - 1}>Última</button>
       </div>
+      <Footer />
       </div>
   );
 };

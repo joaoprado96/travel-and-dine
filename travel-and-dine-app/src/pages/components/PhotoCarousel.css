@@ -1,0 +1,15 @@
+.carrossel-imagem {
+    max-width: 100%;  /* Máxima largura da imagem é 100% do container */
+    max-height: 100%; /* Máxima altura da imagem é 100% do container */
+    display: block;   /* Remove qualquer espaço extra abaixo da imagem */
+    object-fit: cover; /* Garante cobertura total do container sem distorcer a imagem */
+  }
+  
+
+.carrossel-container {
+    width: 800px;  /* Largura fixa */
+    height: 600px; /* Altura fixa */
+    overflow: hidden;
+}
+
+  
