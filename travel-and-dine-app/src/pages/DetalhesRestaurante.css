@@ -1,0 +1,62 @@
+/* DetalhesRestaurante.css */
+body {
+    padding-top: 0px; /* Ajuste este valor conforme a altura do seu menu superior */
+  }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .info-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    align-items: center; /* Centraliza na vertical */
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .info-box:hover {
+    transform: translateY(-5px);
+  }
+  
+  .info-item {
+    margin: 20px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    align-items: center; /* Centraliza na vertical */
+  }
+  
+  .carousel-container {
+    margin: 30px 0;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+  }
+
+  .price-icons {
+    color: gold; /* Cor para os ícones de preço */
+    font-weight: bold; /* Deixa o texto mais destacado */
+    font-size: 1.3rem; /* Tamanho maior para as estrelas */
+    margin-right: 5px; /* Espaço extra à direita dos ícones */
+  }
+  
+  .rating-icons {
+    color: gold; /* Cor para os ícones de estrelas */
+    font-size: 1.5rem; /* Tamanho maior para as estrelas */
+    margin-right: 5px; /* Espaço extra à direita dos ícones */
+  }
+  
+  /* Adicione mais estilos conforme necessário */
+  

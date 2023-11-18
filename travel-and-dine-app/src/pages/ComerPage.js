@@ -3,9 +3,9 @@ import { getFiltros, getRestaurants } from '../services/apiService';
 import { Link } from 'react-router-dom';
 import Select from 'react-select';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import WelcomeSection from './components/WelcomeSection';
 import FeaturesSection from './components/FeaturesSection';
-import Footer from './components/Footer';
 import './ComerPage.css';
 const config = require('../var');
 
