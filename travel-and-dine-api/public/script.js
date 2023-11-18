@@ -3,7 +3,7 @@ document.getElementById('uploadForm').addEventListener('submit', function(e) {
   
     var formData = new FormData(this);
     
-    fetch('http://localhost:3001/rotas/upload', {
+    fetch('http://localhost:3001/image', {
       method: 'POST',
       body: formData
     })

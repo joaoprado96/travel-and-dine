@@ -49,7 +49,7 @@ def gerar_dados_aleatorios():
 # Conectar ao MongoDB
 client = MongoClient('mongodb://localhost:27017/')
 db = client['travelanddine']
-colecao = db['meumodelos']
+colecao = db['restaurantmodels']
 
 # Gerar e inserir dados
 for _ in range(100):  # Gerar 10 registros
