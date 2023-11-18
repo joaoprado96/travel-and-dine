@@ -1,0 +1,8 @@
+/* Footer.css */
+footer {
+    background-color: #333; /* Mesma cor de fundo do header */
+    color: white; /* Mesma cor de texto */
+    padding: 10px 20px; /* Espaçamento similar */
+    text-align: center; /* Alinhamento centralizado */
+  }
+  

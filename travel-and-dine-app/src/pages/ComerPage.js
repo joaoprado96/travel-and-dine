@@ -136,7 +136,6 @@ const ComerPage = () => {
       <div className="menu-superior">
       <Header />
           <div className="menu-content">
-            <h2>Opções de Restaurantes</h2>
               <form onSubmit={handleSubmit}>
                 <div className="form-container">
                   {renderSelectWithImage('culinaria', handleFilterChange)}
